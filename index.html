@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Adi Mahmood | Bento Portfolio</title>
-    <!-- خط Inter للقراءة المريحة والحديثة -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -30,7 +28,7 @@
             color: var(--text-main);
             height: 100vh; 
             display: flex;
-            align-items: center;
+            align-items: center; /* هذا يفيد بس بالشاشات الكبيرة */
             justify-content: center;
             overflow: hidden; 
         }
@@ -101,10 +99,29 @@
         .lang-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.9rem; }
         .lang-item span:last-child { color: var(--text-muted); }
 
+        /* ======== الحل السحري للموبايل ======== */
         @media (max-width: 1024px) {
-            body { height: auto; overflow: visible; padding: 20px 0; }
-            .bento-grid { display: flex; flex-direction: column; height: auto; }
-            .scrollable { overflow-y: visible; padding-right: 0; }
+            body { 
+                height: auto; 
+                min-height: 100vh; /* حتى نضمن يأخذ كل الشاشة */
+                overflow-y: auto; /* نرجع السكرول الطبيعي للشاشة */
+                align-items: flex-start; /* هذا اللي جان كاص الشاشة! */
+                padding: 30px 0; 
+            }
+            .bento-grid { 
+                display: flex; 
+                flex-direction: column; 
+                height: auto; 
+                gap: 15px; /* مسافات أصغر بين المربعات */
+                padding: 0 15px; /* حواف أنعم للتليفون */
+            }
+            .bento-card {
+                padding: 20px; /* زغرنا البادنغ الداخلي حتى يصير أرتب */
+            }
+            .scrollable { 
+                overflow-y: visible; 
+                padding-right: 0; 
+            }
         }
     </style>
 </head>
@@ -112,21 +129,18 @@
 
     <div class="bento-grid">
         
-        <!-- 1. Profile Card -->
         <div class="bento-card card-profile">
             <h1 class="profile-name">Ali Adi Mahmood</h1>
             <div class="profile-title">&lt; Computer Science Student /&gt;</div>
             <div class="location"><i class="fa-solid fa-location-dot"></i> Baghdad, Iraq</div>
         </div>
 
-        <!-- 2. About Me Card -->
         <div class="bento-card card-about">
             <h2><i class="fa-solid fa-user-astronaut"></i> About Me</h2>
             <p>A 3rd-year Computer Science student at Al-Turath University moving to the 4th year. I have basic knowledge of programming logic and building software.</p>
             <p style="margin-top: 10px;">I want to use my skills in Python, C#, and web development to learn more and complete my academic projects efficiently.</p>
         </div>
 
-        <!-- 3. Education Card -->
         <div class="bento-card card-edu">
             <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
             <h3 style="font-size: 1rem; margin-bottom: 5px;">B.Sc. in Computer Science</h3>
@@ -135,7 +149,6 @@
             <p style="font-size: 0.85rem; margin-top: 5px; color: #fff;">Status: Finished 3rd Year</p>
         </div>
 
-        <!-- 4. Contact & Languages Card (Fixed LinkedIn Link) -->
         <div class="bento-card card-contact scrollable">
             <h2 style="margin-bottom: 10px;"><i class="fa-solid fa-link"></i> Connect</h2>
             <div class="contact-links">
@@ -150,7 +163,6 @@
             <div class="lang-item"><span>English</span> <span>A2</span></div>
         </div>
 
-        <!-- 5. Academic Activities Card -->
         <div class="bento-card card-activities scrollable">
             <h2><i class="fa-solid fa-bolt"></i> Academic & Learning Activities</h2>
             
@@ -175,7 +187,6 @@
             </div>
         </div>
 
-        <!-- 6. Skills Card -->
         <div class="bento-card card-skills scrollable">
             <h2><i class="fa-solid fa-code"></i> Technical Skills</h2>
             
